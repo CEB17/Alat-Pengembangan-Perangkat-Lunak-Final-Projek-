@@ -1,0 +1,2 @@
+int64 lastRodaKiri
+int64 lastRodaKanan

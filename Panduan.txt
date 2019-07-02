@@ -1,0 +1,19 @@
+install catkin tools
+kami menggunakan custom message dan bukan std_msg 
+/============perintah_membuild_untuk_pertama_kalinya===========/
+catkin build --cmake-args -DCMAKE_BUILD_TYPE=Release
+/============perintah_membuild_perpaket========================/
+catkin build control
+catkin build vision
+catkin build arduino
+/============pengunduhan_program_arduino_dari_ros_ke_arduino===/
+catkin build --no-deps  arduino --make-args arduino_firmware_hello-upload
+roscore
+/============menjalankan_program_per_pakage====================/
+rosrun rosserial_python serial_node.py /dev/ttyACM0 _baud:=9600
+rosrun control nama_program_yang_telah_di_initial_dalam_cmakelist
+rosrun vison nama_program_yang_telah_di_initial_dalam_cmakelist
+/============melihat_messagenya_terisi_apa_tidak===============/
+rostopic echo /it_control
+rostopic echo /it_vision
+rostopic echo /arduino_it
